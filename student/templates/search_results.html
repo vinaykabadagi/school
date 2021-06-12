@@ -1,0 +1,31 @@
+{% if user.is_authenticated %}
+<h1 style="background-color: rgb(11, 61, 61); text-align: center; font-size: 40px; color: azure;">Search Result</h1>
+<form action="{% url 'search_results' %}" method="get" >
+  <input name="q" type="text" placeholder="Enter Student Name/Standard" size="50">
+</form><br><br>
+<ul>
+  {% if object_list %}
+  {% for md in object_list %}
+    <li>
+        <p > <b> Name:</b>{{ md.name }} <br> 
+        <b> Standard:</b>{{ md.standard}}</p>
+    </li>
+    <form action="del/{{md.id}}" method="POST" >
+      {% csrf_token %}
+      <button value="remove" type="submit">Remove</button>
+    </form>
+    <br><form action="update/{{md.id}}" method="GET" >
+      <input name="q" type="text" placeholder="Update Standard" size="13">
+    </form>
+</ul>
+    {% endfor %}
+  {% else %}
+  <p style="font-size: 1.5em;">No results</p>
+  {% endif %}
+  
+
+<p><a href="{% url 'logout' %}">Log Out</a>&nbsp; <a href="{% url 'home' %}" >Dashboard</a></p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
