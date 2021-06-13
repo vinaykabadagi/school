@@ -14,23 +14,23 @@
   </div>
   {% endfor %}
   {% endif %}
-<h1 >Dashboard</h1>
-<p>Hi,{{ user.username }}!</p>
+<h2>Hi,{{ user.username }}!</h2><br>
+<h3>Search Student</h3>
 <form action="{% url 'search_results' %}" method="get" >
   <input name="q" type="text" placeholder="Enter Student Name/Standard" size="50">
-  <input type="submit" value="Search">
-</form>
+  <input type="submit" value="Search" class="btn btn-primary">
+</form><br>
 <div >
+  <h3>Add Student</h3>
   <form action = "" method = "post"> 
     {% csrf_token %} 
     {{ form }} 
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" class="btn btn-primary">
 </form> <br><br><br><br>
-
-  <p><a href="{% url 'logout' %}">Log Out</a></p>
+  <button type="button" class="btn btn-danger"><a href="{% url 'logout' %}">Log Out</button></p>
 </div>
 {% else %}
   <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a>
+  <button class="btn btn-primary"><a href="{% url 'login' %}">Log In</a></button>
 {% endif %}
 {% endblock %}

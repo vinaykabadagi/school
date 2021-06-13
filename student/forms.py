@@ -6,4 +6,4 @@ class studentForm(forms.ModelForm):
         model = student 
         fields = ['name','standard']
         name = forms.CharField()
-        standard=forms.CharField()
+        standard=forms.IntegerField(min_value=1,max_value=12)

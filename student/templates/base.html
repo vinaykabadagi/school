@@ -6,10 +6,28 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
   <title>{% block title %}School{% endblock %}</title>
+  <style>
+    h1{
+      background-color: rgb(75, 75, 75);
+      color: antiquewhite;
+      text-align: center;
+    }
+    body{
+      margin: 01%;
+      padding: 1%;
+      background-color: rgb(166, 186, 202);
+    }
+    a{
+      text-decoration: none;
+      color: antiquewhite;
+    }
+
+  </style>
 </head>
 
 <body>
   <main>
+    <h1>School</h1>
     {% block content %}
     {% endblock %}
   </main>

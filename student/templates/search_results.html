@@ -1,33 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
 {% if user.is_authenticated %}
-<h1 >Search Result</h1>
+<h2 > Search Result</h2>
 <form action="{% url 'search_results' %}" method="get" >
   <input name="q" type="text" placeholder="Enter Student Name/Standard" size="50">
-  <input type="submit" value="Search">
+  <input type="submit" value="Search" class="btn btn-primary">
 </form><br><br>
 <ul>
   {% if object_list %}
   {% for md in object_list %}
     <li>
-        <p > <b> Name:</b>{{ md.name }} <br> 
+        <p > <b> Name:</b>{{ md.name }} &nbsp;
         <b> Standard:</b>{{ md.standard}}</p>
-    </li>
-    <form action="del/{{md.id}}" method="POST" >
+    
+    <form action="del/{{md.id}}" method="POST" class="form-inline">
       {% csrf_token %}
-      <button value="remove" type="submit">Remove</button>
+      <button value="remove" type="submit" class="btn btn-warning">Remove</button>
     </form>
-    <br><form action="update/{{md.id}}" method="GET" >
+    <form action="update/{{md.id}}" method="GET" class="form-inline">
       <input name="q" type="text" placeholder="Update Standard" size="13">
-    </form>
-</ul>
-    {% endfor %}
+    </form></li>
+
+    {% endfor %}</ul>
   {% else %}
   <p style="font-size: 1.5em;">No results</p>
   {% endif %}
   
 
-<p><a href="{% url 'logout' %}">Log Out</a>&nbsp; <a href="{% url 'home' %}" >Dashboard</a></p>
+<button type="button" class="btn btn-danger"><a href="{% url 'logout' %}">Log Out</a></button>&nbsp;<button class="btn btn-primary"> <a href="{% url 'home' %}" >Add Student</a></button>
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">Log In</a>
